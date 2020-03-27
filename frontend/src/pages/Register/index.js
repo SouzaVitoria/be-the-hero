@@ -2,10 +2,13 @@ import React from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import api from "../../services/api";
 import "./styles.css";
 import logoImg from "../../assets/logo.svg";
 
 export default function Register() {
+  function handleRegister() {}
+
   return (
     <div className="register-container">
       <div className="content">
@@ -21,7 +24,7 @@ export default function Register() {
             Voltar para o Logon
           </Link>
         </section>
-        <form>
+        <form onSubmit={handleRegister}>
           <input placeholder="Nome da ONG" />
           <input type="email" placeholder="E-mail" />
           <input placeholder="Whatsapp" />
