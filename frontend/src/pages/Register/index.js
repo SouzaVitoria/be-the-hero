@@ -7,7 +7,9 @@ import "./styles.css";
 import logoImg from "../../assets/logo.svg";
 
 export default function Register() {
-  function handleRegister() {}
+  function handleRegister(e) {
+    e.preventDefault();
+  }
 
   return (
     <div className="register-container">
