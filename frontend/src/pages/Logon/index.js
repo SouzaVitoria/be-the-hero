@@ -4,9 +4,21 @@ import { FiLogIn } from "react-icons/fi";
 import "./styles.css";
 import heroesImg from "../../assets/heroes.png";
 import logoImg from "../../assets/logo.svg";
+import api from "../../services/api";
 
 export default function Logon() {
   const [id, setId] = useState("");
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post("sessions", { id });
+      console.log(response.data.name);
+    } catch (error) {
+      alert("Falha no login, tente novamente ");
+    }
+  }
+
   return (
     <div className="logon-container">
       <section className="form">
