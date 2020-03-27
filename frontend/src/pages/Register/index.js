@@ -13,10 +13,16 @@ export default function Register() {
   const [city, setCity] = useState("");
   const [uf, setUf] = useState("");
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
-
     const data = { name, email, whatsapp, city, uf };
+
+    try {
+      const response = await api.post("ongs", data);
+      alert(`Seu ID de acess: ${response.data.id}`);
+    } catch (error) {
+      alert("Erro no cadastro, tente novamente.");
+    }
   }
 
   return (
