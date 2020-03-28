@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 import logoImg from "../../assets/logo.png";
 import styles from "./styles";
@@ -27,6 +28,7 @@ export default function Incidents() {
           <Text>130,00</Text>
           <TouchableOpacity onPress={() => {}}>
             <Text>Ver mais Detalhes</Text>
+            <Feather name="arrow-right" size={16} color="#E02041" />
           </TouchableOpacity>
         </View>
       </View>
