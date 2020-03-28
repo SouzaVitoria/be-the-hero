@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { View, FlatList, Image, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import logoImg from "../../assets/logo.png";
@@ -18,22 +18,28 @@ export default function Incidents() {
       <Text style={styles.description}>
         Escolha um dos casos abaixo e salve o dia.
       </Text>
-      <View style={styles.incidentsList}>
-        <View style={styles.incident}>
-          <Text style={styles.incidentProperty}>ONG:</Text>
-          <Text style={styles.incidentValue}>APAD</Text>
+      <FlatList
+        style={styles.incidentsList}
+        data={[1, 2, 3]}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={incident => String(incident)}
+        renderItem={() => (
+          <View style={styles.incident}>
+            <Text style={styles.incidentProperty}>ONG:</Text>
+            <Text style={styles.incidentValue}>APAD</Text>
 
-          <Text style={styles.incidentProperty}>CASO:</Text>
-          <Text style={styles.incidentValue}>Cachorro atropelado</Text>
+            <Text style={styles.incidentProperty}>CASO:</Text>
+            <Text style={styles.incidentValue}>Cachorro atropelado</Text>
 
-          <Text style={styles.incidentProperty}>VALOR:</Text>
-          <Text style={styles.incidentValue}>130,00</Text>
-          <TouchableOpacity style={styles.detailsButton} onPress={() => {}}>
-            <Text style={styles.detailsButtonText}>Ver mais Detalhes</Text>
-            <Feather name="arrow-right" size={16} color="#E02041" />
-          </TouchableOpacity>
-        </View>
-      </View>
+            <Text style={styles.incidentProperty}>VALOR:</Text>
+            <Text style={styles.incidentValue}>130,00</Text>
+            <TouchableOpacity style={styles.detailsButton} onPress={() => {}}>
+              <Text style={styles.detailsButtonText}>Ver mais Detalhes</Text>
+              <Feather name="arrow-right" size={16} color="#E02041" />
+            </TouchableOpacity>
+          </View>
+        )}
+      />
     </View>
   );
 }
