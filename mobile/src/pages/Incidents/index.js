@@ -7,27 +7,29 @@ import styles from "./styles";
 
 export default function Incidents() {
   return (
-    <View>
-      <View>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Image source={logoImg} />
-        <Text>
-          Total de <Text>0 casos.</Text>
+        <Text style={styles.headerText}>
+          Total de <Text style={styles.headerTextBold}>0 casos.</Text>
         </Text>
       </View>
-      <Text>Bem-Vindo</Text>
-      <Text>Escolha um dos casos abaixo e salve o dia.</Text>
-      <View>
-        <View>
-          <Text>ONG:</Text>
-          <Text>APAD</Text>
+      <Text style={styles.title}>Bem-Vindo</Text>
+      <Text style={styles.description}>
+        Escolha um dos casos abaixo e salve o dia.
+      </Text>
+      <View style={styles.incidentsList}>
+        <View style={styles.incident}>
+          <Text style={styles.incidentProperty}>ONG:</Text>
+          <Text style={styles.incidentValue}>APAD</Text>
 
-          <Text>CASO:</Text>
-          <Text>Cachorro atropelado</Text>
+          <Text style={styles.incidentProperty}>CASO:</Text>
+          <Text style={styles.incidentValue}>Cachorro atropelado</Text>
 
-          <Text>VALOR:</Text>
-          <Text>130,00</Text>
-          <TouchableOpacity onPress={() => {}}>
-            <Text>Ver mais Detalhes</Text>
+          <Text style={styles.incidentProperty}>VALOR:</Text>
+          <Text style={styles.incidentValue}>130,00</Text>
+          <TouchableOpacity style={styles.detailsButton} onPress={() => {}}>
+            <Text style={styles.detailsButtonText}>Ver mais Detalhes</Text>
             <Feather name="arrow-right" size={16} color="#E02041" />
           </TouchableOpacity>
         </View>
