@@ -1,11 +1,18 @@
 import React from "react";
 import { View, FlatList, Image, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 import logoImg from "../../assets/logo.png";
 import styles from "./styles";
 
 export default function Incidents() {
+  const navigation = useNavigation();
+
+  function navigateToDetail() {
+    navigation.navigate("Detail");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -33,7 +40,10 @@ export default function Incidents() {
 
             <Text style={styles.incidentProperty}>VALOR:</Text>
             <Text style={styles.incidentValue}>130,00</Text>
-            <TouchableOpacity style={styles.detailsButton} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.detailsButton}
+              onPress={navigateToDetail}
+            >
               <Text style={styles.detailsButtonText}>Ver mais Detalhes</Text>
               <Feather name="arrow-right" size={16} color="#E02041" />
             </TouchableOpacity>
