@@ -9,8 +9,8 @@ import styles from "./styles";
 
 export default function Incidents() {
   const [incidents, setIncidents] = useState([]);
-  const [total, setTotal] = useState([]);
-  const navigation = useNavigation(0);
+  const [total, setTotal] = useState(0);
+  const navigation = useNavigation();
 
   function navigateToDetail(incident) {
     navigation.navigate("Detail", { incident });
