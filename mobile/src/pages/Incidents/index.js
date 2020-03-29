@@ -8,16 +8,18 @@ import logoImg from "../../assets/logo.png";
 import styles from "./styles";
 
 export default function Incidents() {
-  const navigation = useNavigation();
   const [incidents, setIncidents] = useState([]);
+  const [total, setTotal] = useState([]);
+  const navigation = useNavigation(0);
 
-  function navigateToDetail() {
-    navigation.navigate("Detail");
+  function navigateToDetail(incident) {
+    navigation.navigate("Detail", { incident });
   }
 
   async function loadIncidents() {
     const response = await api.get("incidents");
     setIncidents(response.data);
+    setTotal(response.headers["x-total-count"]);
   }
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function Incidents() {
       <View style={styles.header}>
         <Image source={logoImg} />
         <Text style={styles.headerText}>
-          Total de <Text style={styles.headerTextBold}>0 casos.</Text>
+          Total de <Text style={styles.headerTextBold}>{total} casos.</Text>
         </Text>
       </View>
       <Text style={styles.title}>Bem-Vindo</Text>
@@ -37,7 +39,7 @@ export default function Incidents() {
         Escolha um dos casos abaixo e salve o dia.
       </Text>
       <FlatList
-        data={incidents}
+        data={[1, 2, 3, 4]}
         style={styles.incidentsList}
         keyExtractor={incident => String(incident.id)}
         showsVerticalScrollIndicator={false}
@@ -54,7 +56,7 @@ export default function Incidents() {
 
             <TouchableOpacity
               style={styles.detailsButton}
-              onPress={navigateToDetail}
+              onPress={() => navigateToDetail(incident)}
             >
               <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
               <Feather name="arrow-right" size={16} color="#E02041" />
