@@ -11,8 +11,14 @@ export default function Detail() {
   const navigation = useNavigation();
   const route = useRoute();
   const incident = route.params.incident;
-  const message =
-    'Olá APAD, estou entrando em contato pois gostaria de ajudar no caso "Cachorro atropelado" com o valor de R$130,00 ';
+  const message = `Olá ${
+    incident.name
+  }, estou entrando em contato pois gostaria de ajudar no caso "${
+    incident.title
+  }" com o valor de ${Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  }).format(incident.value)} `;
 
   function navigateBack() {
     navigation.goBack();
@@ -20,14 +26,16 @@ export default function Detail() {
 
   function sendMail() {
     MailComposer.composeAsync({
-      subject: "Herói do caso: Cachorro Atropelado",
-      recipients: ["vitoriasouza161@outlook.com"],
+      subject: `Herói do caso: ${incident.title}`,
+      recipients: [incident.email],
       body: message
     });
   }
 
   function sendWhatsapp() {
-    Linking.openURL(`whatsapp://send?phone=5511956956284&text=${message}`);
+    Linking.openURL(
+      `whatsapp://send?phone=${incident.whatsapp}&text=${message}`
+    );
   }
 
   return (
@@ -54,7 +62,7 @@ export default function Detail() {
           {Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL"
-          }).format("120")}
+          }).format(incident.value)}
         </Text>
       </View>
       <View style={styles.contactBox}>
